@@ -1,0 +1,30 @@
+package com.example.springbootsecurity.SpringBootRestSecurity.config;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CustomerDetailsService implements UserDetailsService{
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		List<SimpleGrantedAuthority> roles = null;
+		
+		if(username.equals("admin")) {
+			roles = Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
+			return new User("admin","{noop}$2a$10$gvtO.XRBgrzLgxohSDxHoeguc9PXf0uso4D0AWdYnqnl2uhnrdkDC",roles);
+		} else if( username.equals("user") ) {
+			roles = Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+			return new User("user","{noop}s$2a$10$.gimiG1grnUn5EQAkXREX.4IlR4xi3SGyew5l0QzYI90PHJVMSnqK",roles);
+		} 
+		throw new UsernameNotFoundException("User not found with Username: "+username);
+	}
+
+}

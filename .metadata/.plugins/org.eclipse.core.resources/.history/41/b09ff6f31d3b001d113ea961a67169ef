@@ -1,0 +1,16 @@
+package com.example.springbootsecurity.SpringBootRestSecurity.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter{
+	
+	@Autowired
+	CustomerDetailsService userDetailService;
+
+	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCrypt
+	}
+}

@@ -1,0 +1,3 @@
+INDEX VERSION 1.131
+F:\Tech\SprintBoot\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1653919286.index
+\lombokPractice\src\main\resources
